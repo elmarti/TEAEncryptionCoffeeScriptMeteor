@@ -1,0 +1,92 @@
+<head>
+  <title>iss</title>
+</head>
+
+<body>
+  <div class="row">
+
+    <div class="text-center col-md-4 col-md-offset-4">
+      <h1>Secret Data Store</h1>
+    </div>
+  </div>
+  {{>crypt}}
+ 
+</body>
+
+<template name="crypt">
+
+  <div class="row">
+
+    <div class=" col-md-4 col-md-offset-4">
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>
+              <input type="text" id="UserName" aria-describedby="UserName">
+            </th>
+          </tr>
+          <tr>
+            <th>User</th>
+            <th>Secret Message</th>
+            <th>
+              <button id="resetData">Reset</button>
+            </th>
+
+          </tr>
+        </thead>
+        <tbody class="pre-scrollable">
+          {{#if getEntry}} {{#each getEntry}}
+          <tr>
+            <td>{{name}}</td>
+            <td class="valueTD">{{value}}</td>
+          </tr>
+          {{/each}} {{/if}}
+          <tr>
+            <td>Password</td>
+            <td>
+              <input type="password" id="UserKey">
+            </td>
+          </tr>
+          <tr>
+            <td>Message</td>
+            <td>
+              <textarea id="NewEntry"></textarea>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+   <div class="modal fade" id="infoModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Public TEA Data Storage</h4>
+        </div>
+
+        <div class="modal-body">
+          <h3>Welcome!</h3>
+          <b>Heres how to get started:</b>
+          <ol>
+            <li>Enter a username - There may already be records associated with it, however they will be using a different password.</li>
+            <li>Enter a password - This will be used to view the data you store.</li>
+            <li>Enter a Message - When you press enter, this wil be added to the database.</li>
+          </ol>
+          <b>How to view your data</b>
+          <p>Type in the name and password associated with the account. Then you can decrypt the values by clicking on them.</p>
+          <p>If you make a mistake, click the 'Reset' button to start again.</p>
+        </div>
+
+        <div class="modal-footer">
+        
+            <button type="button" class="btn btn-default" data-dismiss="modal">Done!</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
